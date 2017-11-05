@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdNight", "NerdNight\NerdNight.csproj", "{AA032E2E-A84D-45AC-868E-7442C39B3F66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NerdNight.Tests", "NerdNight.Tests\NerdNight.Tests.csproj", "{753CD44D-C5C1-4FB7-B805-00D8C5501146}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA032E2E-A84D-45AC-868E-7442C39B3F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA032E2E-A84D-45AC-868E-7442C39B3F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA032E2E-A84D-45AC-868E-7442C39B3F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA032E2E-A84D-45AC-868E-7442C39B3F66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{753CD44D-C5C1-4FB7-B805-00D8C5501146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{753CD44D-C5C1-4FB7-B805-00D8C5501146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{753CD44D-C5C1-4FB7-B805-00D8C5501146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{753CD44D-C5C1-4FB7-B805-00D8C5501146}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
