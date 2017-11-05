@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -11,6 +12,7 @@ namespace NerdNight.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Message = "Secret key = " + ConfigurationManager.AppSettings["SecretKey"];
             return View();
         }
 
