@@ -1,0 +1,19 @@
+﻿@model NerdNight.Models.Campaign
+
+@{
+    ViewBag.Title = "Edit Campaign";
+    ViewBag.ButtonText = "Update";
+}
+
+<h2>Edit</h2>
+
+
+@Html.EditorForModel()
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

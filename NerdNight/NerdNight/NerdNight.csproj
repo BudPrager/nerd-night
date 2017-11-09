@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -196,6 +197,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CampaignsController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -282,6 +284,12 @@
     <Content Include="Views\Shared\DisplayTemplates\Player.cshtml" />
     <Content Include="secretappsettings.config.example" />
     <Content Include="secretappsettings.config" />
+    <Content Include="Views\Campaigns\Create.cshtml" />
+    <Content Include="Views\Campaigns\Delete.cshtml" />
+    <Content Include="Views\Campaigns\Details.cshtml" />
+    <Content Include="Views\Campaigns\Edit.cshtml" />
+    <Content Include="Views\Campaigns\Index.cshtml" />
+    <Content Include="Views\Campaigns\EditorTemplates\Campaign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

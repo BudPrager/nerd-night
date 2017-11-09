@@ -1,0 +1,34 @@
+﻿@model NerdNight.Models.Campaign
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Campaign</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Group.GroupName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group.GroupName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CampaignName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CampaignName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

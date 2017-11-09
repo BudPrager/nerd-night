@@ -25,7 +25,8 @@ namespace NerdNight.DAL
             {
                 new Campaign {CampaignName = "Grunt Darkmagic", GroupID = context.Groups.Single(g => g.GroupName == "The Nerds").ID },
                 new Campaign {CampaignName = "Out of the Abyss", GroupID = context.Groups.Single(g => g.GroupName == "The Nerds").ID },
-                new Campaign {CampaignName = "Back to the Day Before", GroupID = context.Groups.Single(g => g.GroupName == "The Nerds").ID }
+                new Campaign {CampaignName = "Back to the Day Before", GroupID = context.Groups.Single(g => g.GroupName == "The Nerds").ID },
+                new Campaign {CampaignName = "Not the Nerds Campaign", GroupID = context.Groups.Single(g => g.GroupName == "Not the Nerds").ID}
             };
 
             campaigns.ForEach(c => context.Campaigns.Add(c));
@@ -46,6 +47,11 @@ namespace NerdNight.DAL
             players.ForEach(p => LinkGroupAndPlayer(context, "The Nerds", p.DisplayName));
             context.SaveChanges();
 
+            context.Players.Add(new Player { DisplayName = "Not a Nerd" });
+            context.SaveChanges();
+            LinkGroupAndPlayer(context, "Not the Nerds", "Not a Nerd");
+            context.SaveChanges();
+
             var campaignPlayers = new List<CampaignPlayer>
             {
                 new CampaignPlayer {PlayerID = context.Players.Single(p => p.DisplayName == "Matt").ID, CampaignID = context.Campaigns.Single(c => c.CampaignName == "Grunt Darkmagic").ID, CharacterName = "Grunt Darkmagic", IsDM = false},
@@ -62,7 +68,9 @@ namespace NerdNight.DAL
                 new CampaignPlayer {PlayerID = context.Players.Single(p => p.DisplayName == "Matt").ID, CampaignID = context.Campaigns.Single(c => c.CampaignName == "Back to the Day Before").ID, CharacterName = "Wizard Thingy", IsDM = false},
                 new CampaignPlayer {PlayerID = context.Players.Single(p => p.DisplayName == "Jack").ID, CampaignID = context.Campaigns.Single(c => c.CampaignName == "Back to the Day Before").ID, CharacterName = "Drunk? Thingy", IsDM = false },
                 new CampaignPlayer {PlayerID = context.Players.Single(p => p.DisplayName == "Miles").ID, CampaignID = context.Campaigns.Single(c => c.CampaignName == "Back to the Day Before").ID, CharacterName = "DM", IsDM = true},
-                new CampaignPlayer {PlayerID = context.Players.Single(p => p.DisplayName == "Tom").ID, CampaignID = context.Campaigns.Single(c => c.CampaignName == "Back to the Day Before").ID, CharacterName = "What is Tom?", IsDM = false}
+                new CampaignPlayer {PlayerID = context.Players.Single(p => p.DisplayName == "Tom").ID, CampaignID = context.Campaigns.Single(c => c.CampaignName == "Back to the Day Before").ID, CharacterName = "What is Tom?", IsDM = false},
+
+                new CampaignPlayer {PlayerID = context.Players.Single(p => p.DisplayName == "Not a Nerd").ID, CampaignID = context.Campaigns.Single(c => c.CampaignName == "Not the Nerds Campaign").ID, CharacterName = "Not a Nerd Character", IsDM = false}
             };
 
             campaignPlayers.ForEach(cp => context.CampaignPlayers.Add(cp));

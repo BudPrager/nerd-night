@@ -23,6 +23,25 @@
                 @Html.EditorFor(model => model.GroupName, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.GroupName, "", new { @class = "text-danger" })
             </div>
+
+            @Html.LabelFor(model => model.Campaigns, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @foreach (var campaign in Model.Campaigns)
+                {
+                    @Html.DisplayFor(model => campaign);
+                    @Html.ActionLink("Edit", "Edit", "Campaigns", new { campaign.ID }, null)
+                }
+                @Html.ActionLink("Create New Campaign", "Create", "Campaigns", new { groupID = Model.ID }, null)
+            </div>
+
+            @Html.LabelFor(model => model.Players, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @foreach (var player in Model.Players)
+                {
+                    @Html.DisplayFor(model => player);
+                    @Html.ActionLink("Edit", "Edit", "Player", new { player.ID }, null) //TODO - should we allow editing here? Does this change their permissions rather than anything else?
+                }
+            </div>
         </div>
 
         <div class="form-group">
