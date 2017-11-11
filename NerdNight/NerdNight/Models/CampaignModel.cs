@@ -17,6 +17,11 @@ namespace NerdNight.Models
         [Required]
         public string CampaignName { get; set; }
 
+        [Required]
+        public bool RequiresAllPlayers { get; set; }
+        [Required]
+        public int MinimumPlayers { get; set; }
+
         public int GroupID { get; set; }
         public virtual Group Group { get; set; }
 

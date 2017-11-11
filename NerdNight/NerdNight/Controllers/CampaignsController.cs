@@ -86,7 +86,7 @@ namespace NerdNight.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,CampaignName,GroupID")] Campaign campaign)
+        public ActionResult Create(Campaign campaign)
         {
             if (ModelState.IsValid)
             {
@@ -120,7 +120,7 @@ namespace NerdNight.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,CampaignName,GroupID")] Campaign campaign)
+        public ActionResult Edit(Campaign campaign)
         {
             if (ModelState.IsValid)
             {

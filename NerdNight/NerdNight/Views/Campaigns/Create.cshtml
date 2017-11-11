@@ -10,7 +10,7 @@
 @Html.EditorForModel()
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Group", "Details", "Group", new { id = Model.GroupID }, null)
 </div>
 
 @section Scripts {

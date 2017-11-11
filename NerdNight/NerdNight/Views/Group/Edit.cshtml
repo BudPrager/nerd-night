@@ -39,7 +39,8 @@
                 @foreach (var player in Model.Players)
                 {
                     @Html.DisplayFor(model => player);
-                    @Html.ActionLink("Edit", "Edit", "Player", new { player.ID }, null) //TODO - should we allow editing here? Does this change their permissions rather than anything else?
+                    //@Html.ActionLink("Edit", "Edit", "Player", new { player.ID }, null) //TODO - should we allow editing here? Does this change their permissions rather than anything else?
+                    //TODO - remove player from group link
                 }
             </div>
         </div>
