@@ -201,12 +201,15 @@
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlayersController.cs" />
     <Compile Include="DAL\GroupContext.cs" />
     <Compile Include="DAL\GroupInitialiser.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AvailabilityViewModel.cs" />
+    <Compile Include="Models\PreferredDayModel.cs" />
     <Compile Include="Models\CampaignModel.cs" />
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -290,6 +293,15 @@
     <Content Include="Views\Campaigns\Edit.cshtml" />
     <Content Include="Views\Campaigns\Index.cshtml" />
     <Content Include="Views\Campaigns\EditorTemplates\Campaign.cshtml" />
+    <Content Include="Views\Group\Prefs.cshtml" />
+    <Content Include="Views\Group\EditorTemplates\PreferredDays.cshtml" />
+    <Content Include="Views\Group\EditorTemplates\PreferredDay.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DayOfWeek.cshtml" />
+    <Content Include="Views\Players\Create.cshtml" />
+    <Content Include="Views\Players\Delete.cshtml" />
+    <Content Include="Views\Players\Details.cshtml" />
+    <Content Include="Views\Players\Edit.cshtml" />
+    <Content Include="Views\Players\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -90,6 +90,101 @@ namespace NerdNight.Controllers
             return View(group);
         }
 
+        // GET: Group/Prefs/5
+        [ActionName("Prefs")]
+        public ActionResult EditAvailabilityPreferrences(int? id)
+        {
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Group group = db.Groups.Find(id);
+            if(group == null)
+            {
+                return HttpNotFound();
+            }
+
+            var preferredDays = group.PreferredDays;
+            foreach(DayOfWeek day in Enum.GetValues(typeof(DayOfWeek)))
+            {
+                if(!preferredDays.Any(p => p.DayOfWeek == day))
+                {
+                    preferredDays.Add(
+                        new PreferredDay()
+                        {
+                            GroupID = id.Value,
+                            DayOfWeek = day
+                        });
+                }
+            }
+            preferredDays = preferredDays.OrderBy(p => p.DayOfWeek).ToList();
+
+            AvailabilityViewModel viewModel = new AvailabilityViewModel()
+            {
+                GroupId = group.ID,
+                DefaultAvailabilityRange = group.DefaultAvailabilityRange,
+                AvailabilityUnit = group.AvailabilityUnit,
+                MainCampaignID = group.CampaignID,
+                PreferredDays = preferredDays
+            };
+
+            ViewBag.CampaignID = new SelectList(group.Campaigns, "ID", "CampaignName", viewModel.MainCampaignID);
+            return View(viewModel);
+        }
+
+        [HttpPost, ActionName("Prefs")]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveAvailabilityPreferrences(AvailabilityViewModel availabilityView)
+        {
+            if (ModelState.IsValid)
+            {
+                var group = db.Groups.Where(g => g.ID == availabilityView.GroupId).Include(g => g.PreferredDays).SingleOrDefault();
+
+                if (group != null)
+                {
+                    //We don't need to save all the blank days, might aswell save some space
+                    var blankDays = availabilityView.PreferredDays.Where(d => !(d.AllDay || d.Morning || d.Afternoon || d.Evening)).ToArray();
+                    foreach (var day in blankDays)
+                    {
+                        availabilityView.PreferredDays.Remove(day);
+
+                        //If we previously stored this day remove it from the database
+                        var originalDay = group.PreferredDays.SingleOrDefault(d => d.ID == day.ID);
+                        if (originalDay != null)
+                        {
+                            db.PreferredDays.Remove(originalDay);
+                        }
+                    }
+
+                    //Set the values per items, entity framework doesn't know what to do with a whole collection
+                    foreach (var day in availabilityView.PreferredDays)
+                    {
+                        var originalDay = group.PreferredDays.Where(d => d.ID == day.ID && d.ID != 0).SingleOrDefault();
+                        if (originalDay != null)
+                        {
+                            var dayEntity = db.Entry(originalDay);
+                            dayEntity.CurrentValues.SetValues(day);
+                        }
+                        else
+                        {
+                            day.ID = 0;
+                            group.PreferredDays.Add(day);
+                        }
+                    }
+
+                    group.DefaultAvailabilityRange = availabilityView.DefaultAvailabilityRange;
+                    group.AvailabilityUnit = availabilityView.AvailabilityUnit;
+                    group.CampaignID = availabilityView.MainCampaignID;
+
+                    db.Entry(group).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Edit", new { group.ID });
+                }            
+            }
+            return View(availabilityView);
+        }
+
         // GET: Group/Delete/5
         public ActionResult Delete(int? id)
         {

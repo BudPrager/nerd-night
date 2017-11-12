@@ -1,0 +1,12 @@
+﻿@model NerdNight.Models.PreferredDay
+
+<tr >
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.GroupID)
+    @Html.HiddenFor(model => model.DayOfWeek)
+    <td>@Html.DisplayFor(model => model.DayOfWeek)</td>
+    <td>@Html.CheckBoxFor(model => model.AllDay)</td>
+    <td>@Html.CheckBoxFor(model => model.Morning)</td>
+    <td>@Html.CheckBoxFor(model => model.Afternoon)</td>
+    <td>@Html.CheckBoxFor(model => model.Evening)</td>
+</tr>

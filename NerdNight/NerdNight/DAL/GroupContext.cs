@@ -33,5 +33,7 @@ namespace NerdNight.DAL
                     gp.ToTable("GroupPlayer");
                 });
         }
+
+        public System.Data.Entity.DbSet<NerdNight.Models.PreferredDay> PreferredDays { get; set; }
     }
 }

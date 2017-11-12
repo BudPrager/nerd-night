@@ -19,23 +19,24 @@
         </dd>
 
         <dt>
+            Session Preferrences
+        </dt>
+        <dd>
+            @Html.DisplayNameFor(model => model.DefaultAvailabilityRange): @Html.DisplayFor(model => model.DefaultAvailabilityRange) @Html.DisplayFor(model => model.AvailabilityUnit)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Campaigns)
         </dt>
         <dd>
-            @foreach (var campaign in Model.Campaigns)
-            {
-               @Html.DisplayFor(model => campaign);
-            }
+            @Html.DisplayFor(model => model.Campaigns)
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Players)
         </dt>
         <dd>
-            @foreach (var player in Model.Players)
-            {
-                @Html.DisplayFor(model => player)
-            }
+            @Html.DisplayFor(model => model.Players);
         </dd>
 
     </dl>

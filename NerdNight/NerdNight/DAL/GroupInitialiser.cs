@@ -13,12 +13,24 @@ namespace NerdNight.DAL
         {
             var groups = new List<Group>
             {
-                new Group {GroupName = "The Nerds"},
+                new Group {GroupName = "The Nerds", CampaignID = 2, DefaultAvailabilityRange = 1, AvailabilityUnit = AvailabilityUnit.Weeks},
                 new Group {GroupName = "Not the Nerds" }
             };
 
-            //TODO - be more flexible on later seeding            
+            //TODO - be more flexible on later seeding
             groups.ForEach(g => context.Groups.Add(g));
+            context.SaveChanges();
+
+            var preferredDays = new List<PreferredDay>
+            {
+                new PreferredDay{GroupID = context.Groups.Single(g => g.GroupName == "The Nerds").ID, DayOfWeek = DayOfWeek.Monday, AllDay = false, Morning = false, Afternoon = false, Evening = true },
+                new PreferredDay{GroupID = context.Groups.Single(g => g.GroupName == "The Nerds").ID, DayOfWeek = DayOfWeek.Tuesday, AllDay = false, Morning = false, Afternoon = false, Evening = true },
+                new PreferredDay{GroupID = context.Groups.Single(g => g.GroupName == "The Nerds").ID, DayOfWeek = DayOfWeek.Wednesday, AllDay = false, Morning = false, Afternoon = false, Evening = true },
+                new PreferredDay{GroupID = context.Groups.Single(g => g.GroupName == "The Nerds").ID, DayOfWeek = DayOfWeek.Thursday, AllDay = false, Morning = false, Afternoon = false, Evening = true },
+                new PreferredDay{GroupID = context.Groups.Single(g => g.GroupName == "The Nerds").ID, DayOfWeek = DayOfWeek.Friday, AllDay = false, Morning = false, Afternoon = false, Evening = true }
+            };
+
+            preferredDays.ForEach(p => context.PreferredDays.Add(p));
             context.SaveChanges();
 
             var campaigns = new List<Campaign>
